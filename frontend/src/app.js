@@ -1,3 +1,7 @@
+
+const backendUrl = 'http://backend:3000';
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const authDiv = document.querySelector('.auth');
     const gameDiv = document.querySelector('.front-page, .board');
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('reg-email').value;
       const password = document.getElementById('reg-password').value;
       try {
-        const response = await fetch('http://localhost:3000/register', { 
+        const response = await fetch('${backendUrl}/register', { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -39,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('verify-email').value;
       const code = document.getElementById('verify-code').value;
       try {
-        const response = await fetch('http://localhost:3000/verify', {
+        const response = await fetch('${backendUrl}/verify', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -58,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('login-email').value;
       const password = document.getElementById('login-password').value;
       try {
-        const response = await fetch('http://localhost:3000/login', { 
+        const response = await fetch('${backendUrl}/login', { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -289,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!refreshToken) return;
       
         try {
-          const response = await fetch('http://localhost:3000/refresh', {
+          const response = await fetch('${backendUrl}/refresh', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -298,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
       
           if (!response.ok) {
-            throw new Error('Failed to refresh token');
+            throw new Error('Failed to refresh token');os
           }
       
           const data = await response.json();
